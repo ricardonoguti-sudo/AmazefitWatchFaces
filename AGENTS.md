@@ -21,6 +21,8 @@ watchfaces/
     └── build/      # artefatos gerados para instalação
 ```
 
+Sempre que for solicitada uma nova watchface, crie um novo subdiretório para ela. Por exemplo, uma watchface chamada **Cyberpunk** deve ser criada em `watchfaces/cyberpunk/`, com seus próprios `README.md`, `assets/`, `src/` e eventuais artefatos `build/`. Nunca crie os arquivos de uma nova watchface diretamente na raiz do projeto nem dentro da pasta de outra watchface.
+
 Ao criar uma watchface, documente seu propósito, informações exibidas, requisitos de instalação e limitações no README da própria pasta.
 
 ## Diretrizes de design

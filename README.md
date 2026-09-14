@@ -22,6 +22,8 @@ watchfaces/
 └── nome-da-watchface-03/
 ```
 
+Ao criar uma nova watchface, use sempre um novo subdiretório. Por exemplo, a watchface **Cyberpunk** deve ficar em `watchfaces/cyberpunk/`, sem misturar seus arquivos com outras watchfaces ou com a raiz do projeto.
+
 Uma pasta de watchface pode conter:
 
 ```text
