@@ -54,6 +54,10 @@ Dependendo do design, as watchfaces poderão incluir:
 - Usar elementos alinhados e consistentes entre as watchfaces.
 - Confirmar resolução, formato e limitações do Amazfit Active 2 Square antes da exportação final.
 
+## Referências técnicas
+
+Os parâmetros do dispositivo, regras de composição, AOD, previews e links oficiais estão em [`docs/REFERENCIAS_TECNICAS.md`](docs/REFERENCIAS_TECNICAS.md).
+
 ## Status
 
 Projeto em fase inicial de planejamento e criação.

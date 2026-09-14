@@ -6,6 +6,8 @@
 
 Leia o [`README.md`](README.md) antes de iniciar uma tarefa e mantenha as mudanças focadas em mostradores para esse modelo de relógio.
 
+As referências técnicas detalhadas estão em [`docs/REFERENCIAS_TECNICAS.md`](docs/REFERENCIAS_TECNICAS.md). Consulte esse arquivo antes de decidir resolução, `deviceSource`, área segura, AOD ou formato de preview.
+
 ## Organização esperada
 
 Cada watchface deve ficar isolada em uma pasta própria dentro de `watchfaces/`:
@@ -29,6 +31,14 @@ Ao criar uma watchface, documente seu propósito, informações exibidas, requis
 - Considere ambientes claros e escuros ao validar a leitura.
 - Confirme resolução, formatos de arquivo e limitações do Amazfit Active 2 Square antes de exportar.
 - Informações possíveis incluem hora, data, bateria, passos, frequência cardíaca, distância, calorias, clima e alarmes; não presuma que toda watchface exibirá todos esses dados.
+
+## Parâmetros técnicos de referência
+
+- Dispositivo Zepp OS: `Amazfit Active 2 (Square)`.
+- Tela: quadrada, 390 × 450 px, raio 86; o dispositivo tem duas teclas físicas.
+- Identificadores listados pelo Zepp OS: `deviceSource` `10223872*`, `10223873` e `10223875`; API level 4.2 e Zepp OS 5.0 na documentação consultada.
+- Preview específico do dispositivo: 266 × 307 px. A especificação genérica também lista 266 × 306 px para 390 × 450; validar no Watchface Maker.
+- O produto possui tela AMOLED de 1,75", 341 PPI, vidro de safira e Bluetooth 5.2/BLE.
 
 ## Cuidados ao trabalhar no repositório
 
