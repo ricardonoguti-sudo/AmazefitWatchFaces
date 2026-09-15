@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="450" viewBox="0 0 390 450">
+  <defs>
+    <linearGradient id="orange" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffb000"/><stop offset=".45" stop-color="#ff6500"/><stop offset="1" stop-color="#ff1800"/></linearGradient>
+    <linearGradient id="olive" x1="0" x2="1"><stop stop-color="#c6d694"/><stop offset="1" stop-color="#4c614e"/></linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#063342" stroke-width=".65" opacity=".52"/><circle cx="2" cy="2" r=".6" fill="#0b7882" opacity=".34"/></pattern>
+    <filter id="glowOrange"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glowCyan"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <clipPath id="screen"><rect x="7" y="4" width="376" height="442" rx="58"/></clipPath>
+  </defs>
+  <rect width="390" height="450" fill="#020303"/>
+  <g clip-path="url(#screen)">
+    <rect x="7" y="4" width="376" height="442" rx="58" fill="#050708" stroke="#0a3440" stroke-width="1.2"/>
+    <rect x="9" y="7" width="372" height="436" rx="56" fill="url(#grid)" opacity=".88"/>
+    <path d="M8 37H382M8 408H382" stroke="#12343b" stroke-width="1" opacity=".6"/>
+
+    <!-- Header -->
+    <path d="M22 20H220L231 32L220 46H22Z" fill="#030606" stroke="url(#orange)" stroke-width="1.4"/>
+    <text x="35" y="40" font-family="Arial,sans-serif" font-size="21" font-weight="800" letter-spacing="3" fill="#ff6f00">CYBERPUNK</text>
+    <path d="M246 21H312L326 35L312 47H246L258 34Z" fill="#111515" stroke="#697755" stroke-width="1"/>
+    <path d="M257 42l15-18h10l-15 18zm22 0l15-18h10l-15 18zm22 0l15-18h10l-15 18z" fill="url(#orange)"/>
+    <circle cx="361" cy="29" r="3" fill="#6ed9ef"/><circle cx="371" cy="29" r="3" fill="#6ed9ef"/>
+
+    <!-- Top data panels -->
+    <path d="M18 62H187L195 70V146H18V73Z" fill="#050909" stroke="#566049" stroke-width="1.2"/>
+    <path d="M202 62H372V146H202Z" fill="#050909" stroke="#566049" stroke-width="1.2"/>
+    <text x="30" y="82" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#b7c88d">BATERIA</text>
+    <text x="216" y="82" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.2" fill="#b7c88d">CLIMA</text>
+    <rect x="29" y="95" width="40" height="24" rx="3" fill="none" stroke="#d9e0db" stroke-width="3"/><rect x="69" y="102" width="4" height="10" fill="#d9e0db"/>
+    <rect x="34" y="100" width="8" height="14" fill="#ff7f00"/><rect x="45" y="100" width="8" height="14" fill="#ff7f00"/><rect x="56" y="100" width="8" height="14" fill="#ff7f00"/>
+    <path d="M216 119c-6-8 1-14 1-20a8 8 0 0 1 16 0c0 6 7 12 1 20a11 11 0 0 1-18 0Z" fill="none" stroke="#ff7a00" stroke-width="2"/>
+    <path d="M225 92v27" stroke="#ff7a00" stroke-width="2"/><circle cx="225" cy="120" r="5" fill="#ff7a00"/>
+    <path d="M333 96c-17 3-26 15-24 27 2 12 14 20 29 17 11-2 19-10 22-18-12 4-25-3-27-15-1-4-1-8 0-11Z" fill="#7ee9ff" filter="url(#glowCyan)"/>
+    <path d="M31 129h123" stroke="#ff7500" stroke-width="5" stroke-dasharray="12 5"/><path d="M236 130h118" stroke="#5d684c" stroke-width="3" stroke-dasharray="10 7"/>
+
+    <!-- Time zone -->
+    <text x="32" y="166" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#c3d09b">HORA</text>
+    <text x="265" y="166" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#c3d09b">MINUTO</text>
+    <path d="M19 174h352" stroke="#263e36" stroke-width="1"/>
+    <path d="M17 178v112M373 178v112" stroke="#6a7c57" stroke-width="3" stroke-dasharray="6 5" opacity=".8"/>
+    <path d="M22 179l-8 9v13l8 8M368 179l8 9v13l-8 8M22 286l-8-9v-13l8-8M368 286l8-9v-13l-8-8" fill="none" stroke="#ff7900" stroke-width="3"/>
+    <rect x="187" y="215" width="15" height="15" fill="url(#orange)" filter="url(#glowOrange)"/><rect x="187" y="253" width="15" height="15" fill="url(#orange)" filter="url(#glowOrange)"/>
+    <path d="M34 302h322" stroke="#263e36" stroke-width="1"/><path d="M37 297h54M300 297h53" stroke="#6e7d5b" stroke-width="4" stroke-dasharray="9 5"/>
+
+    <!-- Bottom cards -->
+    <g fill="#050909" stroke="#5c6b4d" stroke-width="1.1">
+      <path d="M18 314h113l7 7v113l-7 7H18l-7-7v-113Z"/>
+      <path d="M144 314h103l7 7v57l-7 7H144l-7-7v-57Z"/>
+      <path d="M263 314h109l7 7v57l-7 7H263l-7-7v-57Z"/>
+      <path d="M144 386h103l7 7v42l-7 7H144l-7-7v-42Z"/>
+      <path d="M263 386h109l7 7v42l-7 7H263l-7-7v-42Z"/>
+    </g>
+    <g font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing=".7" fill="#bdcc94">
+      <text x="78" y="331">DATA</text><text x="161" y="331">PASSOS</text><text x="278" y="331">DISTÂNCIA</text><text x="161" y="403">CALORIAS</text><text x="278" y="403">SONO</text><text x="346" y="358" font-size="9" fill="#f1f3f2">KM</text>
+      <text x="70" y="402" font-size="11" fill="#bdcc94">DIA</text>
+    </g>
+    <g fill="none" stroke="#ff8500" stroke-width="2">
+      <rect x="25" y="327" width="24" height="20"/><path d="M25 333h24M30 323v8M44 323v8"/>
+    </g>
+    <path d="M158 348l16-10 10 5 8 12-10 3-7-6-7 9-13-5Z" fill="#b9c991"/><path d="M151 353l26 12" stroke="#b9c991" stroke-width="3"/>
+    <path d="M278 346l7-9 8 9c3 5-2 12-8 12s-10-7-7-12Z" fill="#b9c991"/><path d="M278 348h15" stroke="#b9c991" stroke-width="2"/>
+    <path d="M157 419c2-9 9-9 8-18 7 7 10 12 7 20-3 7-11 7-15-2Z" fill="#b9c991"/><path d="M278 415h30v8h-30zM278 407h20v8h-20z" fill="#b9c991"/>
+    <path d="M145 374h104M264 374h105" stroke="#ff7a00" stroke-width="1" stroke-dasharray="6 6"/>
+    <path d="M28 399h98v37H28Z" fill="none" stroke="#ff7a00" stroke-width="1.2"/>
+    <path d="M20 390v34M25 390v34" stroke="#687852" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="379" cy="422" r="3" fill="#00d9ff"/><circle cx="16" cy="422" r="3" fill="#ff7a00"/>
+  </g>
+</svg>

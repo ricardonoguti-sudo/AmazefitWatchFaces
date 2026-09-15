@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="450" viewBox="0 0 390 450">
+  <g font-family="Arial,sans-serif" font-weight="700">
+    <text x="87" y="118" font-size="29" fill="#f1f3f2">90%</text>
+    <text x="247" y="118" font-size="29" fill="#f1f3f2">24°C</text>
+    <text x="23" y="385" font-size="31" fill="#f1f3f2">14/09</text>
+    <text x="34" y="430" font-size="25" fill="#ff7a00">SEG</text>
+    <text x="143" y="358" font-size="29" fill="#f1f3f2">7655</text>
+    <text x="260" y="358" font-size="26" fill="#ff7a00">3,66</text>
+    <text x="143" y="421" font-size="29" fill="#f1f3f2">338</text>
+    <text x="264" y="421" font-size="23" fill="#ff7a00">7h30</text>
+  </g>
+</svg>
