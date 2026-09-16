@@ -60,13 +60,15 @@ function pad2(value) {
   return `${value < 10 ? '0' : ''}${value}`
 }
 
+// Contadores sem leitura mostram zero, e nao um tracinho: zero e o estado vazio
+// real de passos, calorias, distancia, sono e bateria no inicio do dia.
 function formatDistance(meters) {
-  if (!Number.isFinite(meters) || meters < 0) return '--,--'
+  if (!Number.isFinite(meters) || meters < 0) return '0,00'
   return (meters / 1000).toFixed(2).replace('.', ',')
 }
 
 function formatSleep(totalMinutes) {
-  if (!Number.isFinite(totalMinutes) || totalMinutes <= 0) return '--'
+  if (!Number.isFinite(totalMinutes) || totalMinutes <= 0) return '0h00min'
   const hours = Math.floor(totalMinutes / 60)
   const minutes = Math.floor(totalMinutes % 60)
   return `${hours}h${pad2(minutes)}min`
@@ -171,16 +173,16 @@ WatchFace({
     // "100%" 68 / "-10C" 70 / "31/12" 75 / "99999" 65 / "9999" 52 / "12,34" 62 /
     // "12h59min" 80. Passos e sono definem os limites: acima de 23 e 18 eles
     // estouram o painel, por isso nao acompanham o corpo maior dos demais campos.
-    const batteryText = addText(87, 73, 83, 38, '--%', 29, 0xffffff)
+    const batteryText = addText(87, 73, 83, 38, '0%', 29, 0xffffff)
     const temperatureText = addText(211, 73, 104, 38, '--°', 29, 0xffffff)
     const dateText = addText(24, 330, 96, 38, '--/--', 29, 0xffffff)
     const weekdayText = addText(32, 371, 80, 24, '--', 17, 0xff7a00, align.CENTER_H, FONT)
-    const stepsText = addText(176, 303, 66, 34, '--', 23, 0xffffff, align.LEFT)
+    const stepsText = addText(176, 303, 66, 34, '0', 23, 0xffffff, align.LEFT)
     // Distancia e sono ficam a direita porque esbarram na arte: o "KM" comeca em
     // x=335 e a borda do painel de sono logo depois de x=364.
-    const distanceText = addText(270, 306, 63, 33, '--,--', 24, 0xff7a00, align.RIGHT)
-    const caloriesText = addText(176, 365, 66, 34, '--', 23, 0xffffff, align.LEFT)
-    const sleepText = addText(281, 368, 83, 33, '--', 18, 0xff7a00, align.RIGHT)
+    const distanceText = addText(270, 306, 63, 33, '0,00', 24, 0xff7a00, align.RIGHT)
+    const caloriesText = addText(176, 365, 66, 34, '0', 23, 0xffffff, align.LEFT)
+    const sleepText = addText(281, 368, 83, 33, '0h00min', 18, 0xff7a00, align.RIGHT)
 
     const time = new Time()
     const refreshTime = () => {
@@ -201,14 +203,14 @@ WatchFace({
     const battery = new Battery()
     const refreshBattery = () => {
       const level = readNumber(() => battery.getCurrent(), -1)
-      batteryText.setProperty(prop.TEXT, level < 0 ? '--%' : `${Math.round(level)}%`)
+      batteryText.setProperty(prop.TEXT, `${Math.max(0, Math.round(level))}%`)
       setBatteryGauge(Math.max(0, level), 100)
     }
 
     const step = new Step()
     const refreshSteps = () => {
       const count = readNumber(() => step.getCurrent(), -1)
-      stepsText.setProperty(prop.TEXT, count < 0 ? '--' : String(Math.round(count)))
+      stepsText.setProperty(prop.TEXT, String(Math.max(0, Math.round(count))))
       setStepsGauge(Math.max(0, count), readNumber(() => step.getTarget(), STEPS_GOAL_FALLBACK))
     }
 
@@ -222,16 +224,18 @@ WatchFace({
     const calorie = new Calorie()
     const refreshCalories = () => {
       const count = readNumber(() => calorie.getCurrent(), -1)
-      caloriesText.setProperty(prop.TEXT, count < 0 ? '--' : String(Math.round(count)))
+      caloriesText.setProperty(prop.TEXT, String(Math.max(0, Math.round(count))))
       setCaloriesGauge(Math.max(0, count), readNumber(() => calorie.getTarget(), CALORIES_GOAL_FALLBACK))
     }
 
     const sleep = new Sleep()
     const refreshSleep = () => {
+      // O sistema so recalcula o sono a cada 30 min; updateInfo forca a leitura.
+      readValue(() => sleep.updateInfo(), null)
       const info = readValue(() => sleep.getInfo(), null)
       const minutes = info && Number.isFinite(info.totalTime) ? info.totalTime : 0
-      sleepText.setProperty(prop.TEXT, info ? formatSleep(info.totalTime) : '--')
-      setSleepGauge(Math.max(0, minutes), SLEEP_GOAL_MINUTES)
+      sleepText.setProperty(prop.TEXT, formatSleep(minutes))
+      setSleepGauge(minutes, SLEEP_GOAL_MINUTES)
     }
 
     let weather
@@ -275,14 +279,16 @@ WatchFace({
     refreshSleep()
     refreshWeather()
 
-    // Weather e Sleep nao expoem onChange, entao dependem do tick de minuto
-    // para refletir a sincronizacao do app Zepp depois que a tela ja carregou.
+    // Tudo que nao tem onChange depende do tick de minuto. Weather e Sleep porque
+    // a API nao oferece evento, e a data porque onPerDay so dispara no instante da
+    // virada: se o relogio perder esse instante, a data fica parada o dia inteiro.
+    // Reler por minuto custa tres setProperty e corrige sozinho no minuto seguinte.
     time.onPerMinute(() => {
       refreshTime()
+      refreshDate()
       refreshWeather()
       refreshSleep()
     })
-    time.onPerDay(refreshDate)
     battery.onChange(refreshBattery)
     step.onChange(refreshSteps)
     distance.onChange(refreshDistance)
